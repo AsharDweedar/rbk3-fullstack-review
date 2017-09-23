@@ -1,10 +1,17 @@
 var mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher');
-
-var repoSchema = mongoose.Schema({
-  // TODO: your schema here!
+mongoose.connect('mongodb://localhost/fetcher',{  useMongoClient: true
 });
 
-var Repo = mongoose.model('Repo', repoSchema);
+  // TODO: your schema here!
 
-module.exports = Repo;
+
+var db = mongoose.connection;
+db.on('error', function (error) {
+	console.log(error.message);
+});
+db.once('open', function () {
+	console.log('DB is ON');
+})
+
+
+module.exports = db;
