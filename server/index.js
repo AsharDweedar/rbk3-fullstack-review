@@ -6,22 +6,15 @@ var app = express();
 app.use(express.static(__dirname + '/../client/dist'));
 
 app.post('/repos/import', function (req, res) {
-  // TODO
   helpers.getReposByUsername(req.body , function (data) {
+    console.log('esahar')
   	    //DO STHG to put data in db
-  		//send response
   		res.status(201).send('done');
   	})
-  //fetch all repos  : https://api.github.com
-  //end res : send all repos array
-
 });
 
 app.get('/repos', function (req, res) {
-
 	res.status(200).send('done');
-  //res.render('repos');
-
 });
 
   var port = 1128;
