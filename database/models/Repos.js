@@ -3,7 +3,8 @@ var mongoose = require('mongoose');
 
 var repoSchema = mongoose.Schema({
   id : Number ,
-  name : String 
+  name : String ,
+  users : { type: mongoose.Schema.Types.ObjectId, ref: 'user' } ,
 });
 
 var Repo = mongoose.model('Repo', repoSchema);
